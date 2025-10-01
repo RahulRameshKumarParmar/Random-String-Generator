@@ -18,7 +18,6 @@ function App() {
   const [stringsHistory, setStringsHistory] = useState<string[]>([]);
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const [singleCopy, setSingleCopy] = useState<boolean[]>(Array(stringsHistory.length).fill(false));
-  console.log(singleCopy);
 
   const generatingString = useCallback(() => {
     if (!lowerCase && !upperCase && !number && !specialCharacters) {
@@ -62,7 +61,7 @@ function App() {
       newCopy[id] = true;
       return newCopy
     });
-    
+
     setTimeout(() => {
       setSingleCopy((prev) => {
         const newCopy = [...prev];
@@ -103,11 +102,11 @@ function App() {
     <>
       <header className='mt-5 flex flex-col justify-center items-center gap-2'>
         <PiSwapBold className='bg-blue-600 text-white p-2 rounded-full' size={50} />
-        <h1 className='text-[2rem] font-bold'>Random String Generator</h1>
-        <p>Generate random strings with customizable options</p>
+        <h1 className='text-[1.5rem] sm:text-[2rem] xl:text-[3rem] font-bold'>Random String Generator</h1>
+        <p className='text-[0.8rem] sm:text-[1rem]'>Generate random strings with customizable options</p>
       </header>
 
-      <main className='w-[50%] m-auto mt-5 mb-5 bg-white shadow-xl rounded-xl p-5 px-5 transition-all ease-in'>
+      <main className='w-[90%] sm:w-[70%] lg:w-[50%] xl:w-[50%] m-auto mt-5 mb-5 bg-white shadow-xl rounded-xl p-5 px-5 transition-all ease-in'>
         <Toaster position='top-right' />
         <div>
           <h3 className='text-[1.2rem] font-bold'>Generation Settings</h3>
@@ -184,7 +183,7 @@ function App() {
         </div>
       </main>
 
-      <section className={`${stringsHistory.length > 0 ? "block" : "hidden"} w-[50%] m-auto mt-5 mb-5 bg-white shadow-xl rounded-xl p-5 px-5 transition-all ease-in`}>
+      <section className={`${stringsHistory.length > 0 ? "block" : "hidden"} w-[90%] sm:w-[70%] lg:w-[50%] xl:w-[50%] m-auto mt-5 mb-5 bg-white shadow-xl rounded-xl p-5 px-5 transition-all ease-in`}>
         <div>
           <h3 className='font-bold text-[1.1rem]'>Recent Generations</h3>
           <ul className='mt-5'>
@@ -203,7 +202,7 @@ function App() {
               )
             })}
           </ul>
-          <button className='mt-3 ms-3 mb-5 flex items-center gap-2 cursor-pointer text-red-500' onClick={() => clearHistory()}> <FaTrashAlt className='text-red-500'/> Clear History</button>
+          <button className='mt-3 ms-3 mb-5 flex items-center gap-2 cursor-pointer text-red-500' onClick={() => clearHistory()}> <FaTrashAlt className='text-red-500' /> Clear History</button>
         </div>
       </section>
     </>
